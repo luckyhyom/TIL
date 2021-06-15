@@ -54,40 +54,166 @@ fetch('https://connerstone21.cafe24api.com/api/v2/oauth/token', {
         'Authorization': 'Basic QXk2eGg0YkhBaEJySEhpdmRBQkc4QTpFd3llNDFDemN5YlczalhMTXpadk5E',
         'Content-Type': 'application/x-www-form-urlencoded'
     },
-    body: 'grant_type=authorization_code&code=vpzk8VunB1puTyX5eM0OfI&redirect_uri=https://connerstone21.cafe24.com'
+    body: 'grant_type=authorization_code&code=OeXNJIssUqqfqJBhllmVdC&redirect_uri=https://connerstone21.cafe24.com'
 }).then((res)=> res.json())
   .then((result) => {
-    // console.log(result['access_token']);
+    console.log(result);
     accessToken=result['access_token'];
-    // console.log(result);
 
-    // console.log(`${accessToken}`);
     // 상품옵션 리스트
-
     // curl -X GET \
     // 'https://connerstone21.cafe24api.com/api/v2/admin/products/16/options' \
     // -H 'Authorization: Bearer result['access_token']' \
     // -H 'Content-Type: application/json' \
-
-    console.log(result);
-
     fetch('https://connerstone21.cafe24api.com/api/v2/admin/products/16/options', {
     headers: {
         'Authorization': `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
-        // 'X-Cafe24-Api-Version': '2021-06-01'
     }
     }).then((res)=> res.json())
     .then((result) => {
-      // console.log(`accessToken : Bearer ${accessToken}`);
-      // console.log(result);
+
+      // 한가지 상품안에 들어있는 옵션의 리스트
+      console.log(result);
+
+      // 옵션 가격 추출
       var productIndex = 0;
       var test = result['option']['options'][0]['option_value'][productIndex]['additional_amount'];
-      // console.log('this!!',result['option']['options']);
-      console.log('test!',test['additional_amount']);
+      console.log('test!',test);
     });
 
-  });
+
+//     // 업데이트
+
+fetch('https://connerstone21.cafe24api.com/api/v2/admin/products/16/options', {
+    method: 'POST',
+    headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        "shop_no": 1,
+        "request": {
+            "has_option": "T",
+            "option_type": "T",
+            "option_list_type": "S",
+            "options": [{
+                "option_name": "Color",
+                "option_value": [{
+                    "option_image_file": "http://connerstone21.cafe24.com/web/upload/image_custom_615421761805558.gif",
+                    "option_color": "#000000",
+                    "option_text": "Black"
+                }, {
+                    "option_image_file": "http://connerstone21.cafe24.com/web/upload/image_custom_615421761805551.gif",
+                    "option_color": "#007543",
+                    "option_text": "Red"
+                }],
+                "option_display_type": "P"
+            }],
+            "use_additional_option": "T",
+            "additional_options": [{
+                "additional_option_name": "Pattern",
+                "required_additional_option": "T",
+                "additional_option_text_length": 20
+            }, {
+                "additional_option_name": "Custom Option",
+                "required_additional_option": "F",
+                "additional_option_text_length": 10
+            }],
+            "use_attached_file_option": "T",
+            "attached_file_option": {
+                "option_name": "Pattern Images",
+                "required": "T",
+                "size_limit": 3
+            }
+        }
+    })
+}).then((res)=> res.json())
+.then((result) => {
+  console.log('update?',result);
+});
+
+
+
+
+//     fetch('https://connerstone21.cafe24api.com/api/v2/admin/products/16/options', {
+//     method: 'PUT',
+//     headers: {
+//         'Authorization': `Bearer ${accessToken}`,
+//         'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({
+//       "shop_no": 1,
+//       "product_no": 16,
+//       "has_option": 'T',
+//       "option_type": 'E',
+//       "option_list_type": 'S',
+//       "option_preset_code": 'S000000C',
+//       "request": {
+//           "option_list_type": "S",
+//           "original_options": [{
+//              "option_code": 'O000000E',
+//              "option_name": 'S1',
+//              "required_option": 'T',
+//              "option_display_type": 'S',
+//              "option_value": [
+//                {
+//                  "option_image_file": '',
+//                  "option_link_image": '',
+//                  "option_color": '',
+//                  "option_text": 'Diamond | 0.3Ct',
+//                  "value_no": 22,
+//                  "additional_amount": '50000.00'
+//                },
+//                {
+//                  "option_image_file": '',
+//                  "option_link_image": '',
+//                  "option_color": '',
+//                  "option_text": 'Ruby | 1.3Ct',
+//                  "value_no": 23,
+//                  "additional_amount": '30000.00'
+//                }
+//              ]
+//            }],
+//           "options": [{
+//              "option_code": 'O000000E',
+//              "option_name": 'S1',
+//              "required_option": 'T',
+//              "option_display_type": 'S',
+//              "option_value": [
+//                {
+//                  "option_image_file": '',
+//                  "option_link_image": '',
+//                  "option_color": '',
+//                  "option_text": 'Diamond | 0.3Ct',
+//                  "value_no": 22,
+//                  "additional_amount": '88888.00'
+//                },
+//                {
+//                  "option_image_file": '',
+//                  "option_link_image": '',
+//                  "option_color": '',
+//                  "option_text": 'Ruby | 1.3Ct',
+//                  "value_no": 23,
+//                  "additional_amount": '30000.00'
+//                }
+//              ]
+//            }],
+//           "use_additional_option": "F",
+//           "additional_options": [],
+//           "use_attached_file_option": "F",
+//           "attached_file_option": []
+//       }
+//   })
+// }).then((res)=> res.json())
+// .then((result) => {
+//   console.log('update?',result);
+// });
+
+});
+
+
+
 
 
 // With request
@@ -116,6 +242,67 @@ fetch('https://connerstone21.cafe24api.com/api/v2/oauth/token', {
 // }
 
 // request(options, callback);
+
+
+
+
+
+
+// 옵션 업데이트 하기
+// var fetch = require('node-fetch');
+
+// fetch('https://{mallid}.cafe24api.com/api/v2/admin/products/16/options', {
+//     method: 'PUT',
+//     headers: {
+//         'Authorization': 'Bearer {access_token}',
+//         'Content-Type': 'application/json',
+//         'X-Cafe24-Api-Version': '{version}'
+//     },
+//     body: JSON.stringify({
+      
+//     })
+// });
+
+// var fetch = require('node-fetch');
+
+// fetch('https://connerstone21.cafe24api.com/api/v2/admin/products/16/options', {
+//     method: 'PUT',
+//     headers: {
+//         'Authorization': 'Bearer {access_token}',
+//         'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({
+//         "shop_no": 1,
+//         "request": {
+//             "options": [{
+//                 "option_name": "S1",
+//                 "option_value": [
+//                   {
+//                     "option_image_file": '',
+//                     "option_link_image": '',
+//                     "option_color": '',
+//                     "option_text": 'Diamond | 0.3Ct',
+//                     "value_no": 22,
+//                     "additional_amount": '50000.00'
+//                   },
+//                   {
+//                     "option_image_file": '',
+//                     "option_link_image": '',
+//                     "option_color": '',
+//                     "option_text": 'Ruby | 1.3Ct',
+//                     "value_no": 23,
+//                     "additional_amount": '30000.00'
+//                   }
+//                 ]
+//             }],
+//         }
+//     })
+// });
+
+
+
+
+
 
 
 
