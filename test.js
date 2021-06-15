@@ -54,7 +54,7 @@ fetch('https://connerstone21.cafe24api.com/api/v2/oauth/token', {
         'Authorization': 'Basic QXk2eGg0YkhBaEJySEhpdmRBQkc4QTpFd3llNDFDemN5YlczalhMTXpadk5E',
         'Content-Type': 'application/x-www-form-urlencoded'
     },
-    body: 'grant_type=authorization_code&code=kHrZdkkRKJcsm1RSGpowQB&redirect_uri=https://connerstone21.cafe24.com'
+    body: 'grant_type=authorization_code&code=vpzk8VunB1puTyX5eM0OfI&redirect_uri=https://connerstone21.cafe24.com'
 }).then((res)=> res.json())
   .then((result) => {
     // console.log(result['access_token']);
@@ -80,10 +80,11 @@ fetch('https://connerstone21.cafe24api.com/api/v2/oauth/token', {
     }).then((res)=> res.json())
     .then((result) => {
       // console.log(`accessToken : Bearer ${accessToken}`);
-      console.log(result);
-      var test = result['option']['options'];
+      // console.log(result);
+      var productIndex = 0;
+      var test = result['option']['options'][0]['option_value'][productIndex]['additional_amount'];
       // console.log('this!!',result['option']['options']);
-      console.log('test!',test[0]);
+      console.log('test!',test['additional_amount']);
     });
 
   });
