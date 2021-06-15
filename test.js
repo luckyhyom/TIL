@@ -18,41 +18,9 @@
 
 
 
-// ?
-
-// var options = { method: 'POST',
-//   url: 'https://connerstone21.cafe24api.com/api/v2/admin/scripttags',
-//   headers: {
-//     'Authorization': "Bearer edsmItZTOqlRbi0mN5yWuF",
-//     'Content-Type': "application/json",
-//   }
-// };
-
-// request(options, function (error, response, body) {
-//   if (error) throw new Error(error);
-  
-//   console.log(body);
-// });
 
 
 
-
-// 상품옵션 리스트
-// var request = require("request");
-
-// var options = { method: 'GET',
-//   url: 'https://connerstone21.cafe24api.com/api/v2/admin/products/16/options',
-//   headers: {
-//     'Authorization': "Bearer {access_token}",
-//     'Content-Type': "application/json",
-//   }
-// };
-
-// request(options, function (error, response, body) {
-//   if (error) throw new Error(error);
-  
-//   console.log(body);
-// });
 
 
 // Access Token
@@ -74,6 +42,83 @@
 // -d 'redirect_uri=https://connerstone21.cafe24.com'
 
 
+
+
+// With fetch
+
+var fetch = require('node-fetch');
+var accessToken = ''; 
+fetch('https://connerstone21.cafe24api.com/api/v2/oauth/token', {
+    method: 'POST',
+    headers: {
+        'Authorization': 'Basic QXk2eGg0YkhBaEJySEhpdmRBQkc4QTpFd3llNDFDemN5YlczalhMTXpadk5E',
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: 'grant_type=authorization_code&code=kHrZdkkRKJcsm1RSGpowQB&redirect_uri=https://connerstone21.cafe24.com'
+}).then((res)=> res.json())
+  .then((result) => {
+    // console.log(result['access_token']);
+    accessToken=result['access_token'];
+    // console.log(result);
+
+    // console.log(`${accessToken}`);
+    // 상품옵션 리스트
+
+    // curl -X GET \
+    // 'https://connerstone21.cafe24api.com/api/v2/admin/products/16/options' \
+    // -H 'Authorization: Bearer result['access_token']' \
+    // -H 'Content-Type: application/json' \
+
+    console.log(result);
+
+    fetch('https://connerstone21.cafe24api.com/api/v2/admin/products/16/options', {
+    headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+        // 'X-Cafe24-Api-Version': '2021-06-01'
+    }
+    }).then((res)=> res.json())
+    .then((result) => {
+      // console.log(`accessToken : Bearer ${accessToken}`);
+      console.log(result);
+      var test = result['option']['options'];
+      // console.log('this!!',result['option']['options']);
+      console.log('test!',test[0]);
+    });
+
+  });
+
+
+// With request
+// var request = require('request');
+
+// var headers = {
+//     'Authorization': 'Basic QXk2eGg0YkhBaEJySEhpdmRBQkc4QTpFd3llNDFDemN5YlczalhMTXpadk5E',
+//     'Content-Type': 'application/x-www-form-urlencoded'
+// };
+
+// var dataString = 'grant_type=authorization_code&code=oC6UyFG0D1GoTJXYQPXbNC&redirect_uri=https://connerstone21.cafe24.com';
+
+// var options = {
+//     url: 'https://connerstone21.cafe24api.com/api/v2/oauth/token',
+//     method: 'POST',
+//     headers: headers,
+//     body: dataString
+// };
+
+// function callback(error, response, body) {
+//     if (!error && response.statusCode == 200) {
+//         console.log(body);
+//     }else{
+//       console.log(error);
+//     }
+// }
+
+// request(options, callback);
+
+
+
+// try to get a access token with fetch
 
 
 // const ripeEndpoint = 'http://v2.api.iphub.info/ip/8.8.8.8'
@@ -106,44 +151,3 @@
 //   });
 
   
-
-// var fetch = require('node-fetch');
-
-// fetch('https://connerstone21.cafe24api.com/api/v2/oauth/token', {
-//     method: 'POST',
-//     headers: {
-//         'Authorization': 'Basic QXk2eGg0YkhBaEJySEhpdmRBQkc4QTpFd3llNDFDemN5YlczalhMTXpadk5E',
-//         'Content-Type': 'application/x-www-form-urlencoded'
-//     },
-//     body: 'grant_type=authorization_code&code=wnclg2C4DVXiVCaLgPTdiA&redirect_uri=https://connerstone21.cafe24.com'
-// }).then((res)=> res.json())
-//   .then((result) => {
-//     console.log(result);
-//   });
-
-
-var request = require('request');
-
-var headers = {
-    'Authorization': 'Basic QXk2eGg0YkhBaEJySEhpdmRBQkc4QTpFd3llNDFDemN5YlczalhMTXpadk5E',
-    'Content-Type': 'application/x-www-form-urlencoded'
-};
-
-var dataString = 'grant_type=authorization_code&code=oC6UyFG0D1GoTJXYQPXbNC&redirect_uri=https://connerstone21.cafe24.com';
-
-var options = {
-    url: 'https://connerstone21.cafe24api.com/api/v2/oauth/token',
-    method: 'POST',
-    headers: headers,
-    body: dataString
-};
-
-function callback(error, response, body) {
-    if (!error && response.statusCode == 200) {
-        console.log(body);
-    }else{
-      console.log(error);
-    }
-}
-
-request(options, callback);
