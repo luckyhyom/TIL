@@ -35,12 +35,12 @@
 
     // metal 템플릿
     let metalYellow =
-        `<div class="stones">
+        `<div class="metals">
                 <input type="checkbox" name="metalColor" id="24K Gold"><label for="24K Gold">24K Gold</label> <br>
             </div>`
 
     let metalRoseGold =
-        `<div class="stones">
+        `<div class="metals">
                 <input type="checkbox" name="metalColor" id="24K Gold"><label for="24K Gold">24K Gold (+￦600,000)</label> <br>
                 <input type="checkbox" name="metalColor" id="22K Gold"><label for="22K Gold">22K Gold (+￦300,000)</label> <br>
                 <input type="checkbox" name="metalColor" id="18K Gold"><label for="18K Gold">18K Gold (+￦450,000)</label> <br>
@@ -50,7 +50,7 @@
                 <input type="checkbox" name="metalColor" id="Silver 925(Sterling Silver)"><label for="Silver 925(Sterling Silver)">Silver 925(Sterling Silver) (+￦460,000)</label> <br>
             </div>`;
     let metalWhite =
-        `<div class="stones">
+        `<div class="metals">
                 <input type="checkbox" name="metalColor" id="22K Gold"><label for="22K Gold">22K Gold (+￦300,000)</label> <br>
                 <input type="checkbox" name="metalColor" id="18K Gold"><label for="18K Gold">18K Gold (+￦450,000)</label> <br>
                 <input type="checkbox" name="metalColor" id="14K Gold"><label for="14K Gold">14K Gold (+￦300,000)</label> <br>
@@ -109,7 +109,7 @@
 
 
 
-            //stone 옵션
+            // <stone> 옵션
 
             let stones = document.querySelectorAll('.stones > input');
 
@@ -139,7 +139,7 @@
         })
     });
 
-    // 직접 만든 버튼과 cafe24버튼 연동
+    // <메탈 컬러> 직접 만든 버튼과 cafe24버튼 연동
     metalColors.forEach(i => {
 
         i.addEventListener('click', () => {
@@ -165,6 +165,22 @@
             default:
                 break;
         }
+
+        // <metal> 옵션
+
+        let metals = document.querySelectorAll('.metals > input');
+
+        metals.forEach(metal=>{
+            metal.addEventListener('click',()=>{
+                document.querySelectorAll('select#product_option_id4 > option').forEach(option=>{
+                    if(metal.id===option.value){
+                        document.querySelector('select#product_option_id4').value = metal.id;
+                    }
+                })
+            })
+        })
+
+
 
         })
 
