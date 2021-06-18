@@ -1,0 +1,18 @@
+<script>
+
+    let stoneColors = document.querySelectorAll('.stoneColors > input');
+    
+    //cafe24의 속성 입력해서 만들기
+    let stoneColors2 = document.querySelectorAll('.ec-product-button.ec-product-preview > li');
+
+    stoneColors.forEach((i)=>{
+        i.addEventListener('click',()=>{
+            stoneColors2.forEach(i2=>{
+                if(i.id===i2.attributes["option_value"].value){
+                    i2.click();
+                }
+            })
+        })
+    });
+
+</script>

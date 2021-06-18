@@ -1,0 +1,130 @@
+<script>
+
+    let stoneColors = document.querySelectorAll('.stoneColors > input');
+
+    //cafe24의 속성 입력해서 만들기
+    let stoneAndMetalColors = document.querySelectorAll('.ec-product-button.ec-product-preview > li');
+
+    let stonesDiv = document.querySelector('.stones-div');
+
+    // html 템플릿
+    let stoneColorWhite =
+        `<div class="stones">
+            <input type="checkbox" name="다이아몬드 / 0.1ct / round / D / VVS1 / Ecellent" id="다이아몬드 / 0.1ct / round / D / VVS1 / Ecellent"><label for="다이아몬드 / 0.1ct / round / D / VVS1 / Ecellent">다이아몬드 / 0.1ct / round / D / VVS1 / Ecellent</label> <br>
+            <input type="checkbox" name="다이아몬드 / 0.1ct / round / G / SI2 / GOOD" id="다이아몬드 / 0.1ct / round / G / SI2 / GOOD"> <label for="다이아몬드 / 0.1ct / round / G / SI2 / GOOD">다이아몬드 / 0.1ct / round / G / SI2 / GOOD</label> <br>
+            <input type="checkbox" name="다이아몬드 / 0.1ct / round / F / SI2 / GOOD" id="다이아몬드 / 0.1ct / round / F / SI2 / GOOD"> <label for="다이아몬드 / 0.1ct / round / F / SI2 / GOOD">다이아몬드 / 0.1ct / round / F / SI2 / GOOD</label> <br>
+            <input type="checkbox" name="다이아몬드 / 0.1ct / round / K / I2 / VeryGood" id="다이아몬드 / 0.1ct / round / K / I2 / VeryGood"> <label for="다이아몬드 / 0.1ct / round / K / I2 / VeryGood">다이아몬드 / 0.1ct / round / K / I2 / VeryGood</label> <br>
+        </div>`
+
+    let stoneColorBlack =
+        `<div class="stones">
+            <input type="checkbox" name="블랙 수정 / 0.1ct" id="블랙 수정 / 0.1ct"><label for="블랙 수정 / 0.1ct">블랙 수정 / 0.1ct</label>
+        </div>`;
+    let stoneColorBlue =
+        `<div class="stones">
+            <input type="checkbox" name="블루 사파이어 / 0.1ct" id="블루 사파이어 / 0.1ct"><label for="블루 사파이어 / 0.1ct">블루 사파이어 / 0.1ct</label>
+            <input type="checkbox" name="블루 토파즈 /Round/LIGHT / B / Non Natural / Bleaching" id="블루 토파즈 /Round/LIGHT / B / Non Natural / Bleaching"> <label for="블루 토파즈 /Round/LIGHT / B / Non Natural / Bleaching">블루 토파즈 /Round/LIGHT / B / Non Natural / Bleaching</label>
+        </div>`;
+    let stoneColorRed =
+        `<div class="stones">
+            <input type="checkbox" name="루비 / Round /LIGHT / AA / Non Natural / Bleaching" id="루비 / Round /LIGHT / AA / Non Natural / Bleaching"><label for="루비 / Round /LIGHT / AA / Non Natural / Bleaching">루비 / Round /LIGHT / AA / Non Natural / Bleaching</label>
+        </div>`;
+
+
+
+
+    // Cafe24 Stones 옵션이 바뀌기때문에, 이벤트 안에서 초기화 해줘야함.
+    let cafe24Stones = document.querySelectorAll('select#product_option_id2 > option');
+    let cafe24SelectedStone = document.querySelector('select#product_option_id2');
+
+
+
+    // 메탈 컬러 disabled 해제 후 선택 가능.
+    // document.querySelectorAll('.ec-product-button.ec-product-preview > li')[4].classList.remove('ec-product-disabled');
+    // document.querySelectorAll('.ec-product-button.ec-product-preview > li')[4].click();
+
+    // 임의로 만든 metalColors 옵션
+    let metalColors = document.querySelectorAll('.metalColors > input');
+
+
+    // stoneColor 옵션
+    stoneColors.forEach((i) => {
+        i.addEventListener('click', () => {
+
+            stoneAndMetalColors.forEach(i2 => {
+                if (i.id === i2.attributes["option_value"].value) {
+
+                    //cafe24의 stoneColor 옵션 클릭
+                    i2.click();
+                }
+            })
+
+            switch (i.id) {
+                case "화이트":
+                    stonesDiv.innerHTML = stoneColorWhite;
+                    break;
+                case "블랙":
+                    stonesDiv.innerHTML = stoneColorBlack;
+                    break;
+                case "블루":
+                    stonesDiv.innerHTML = stoneColorBlue;
+                    break;
+                case "레드":
+                    stonesDiv.innerHTML = stoneColorRed;
+                    break;
+                default:
+                    break;
+            }
+
+
+
+            //stone 옵션
+
+            let stones = document.querySelectorAll('.stones > input');
+
+            // Cafe24 Stones 옵션이 바뀌기때문에, 이벤트 안에서 초기화 해줘야함.
+            let cafe24Stones = document.querySelectorAll('select#product_option_id2 > option');
+            let cafe24SelectedStone = document.querySelector('select#product_option_id2');
+
+            stones.forEach((stone) => {
+                stone.addEventListener('click', () => {
+                    cafe24Stones.forEach(cafe24Stone=>{
+                        console.log('stone',stone);
+                        console.log('cafe24Stone',cafe24Stone);
+                        if(stone.id===cafe24Stone.value){
+                            console.log('true, stone.id:',stone.id);
+                            // cafe24Stone.click();
+                            // option 엘리먼트 선택 -> value.
+                            cafe24SelectedStone.value = stone.id;
+                            document.querySelectorAll('.ec-product-button.ec-product-preview > li').forEach(i=>{
+                                i.classList.remove('ec-product-disabled')
+                            })
+                        }else{
+                            console.log('false');
+                        }
+                    })
+                })
+            })
+        })
+    });
+    // console.log(stones);
+
+    // 직접 만든 버튼과 cafe24버튼 연동
+    metalColors.forEach(i=>{
+        i.addEventListener('click',()=>{
+            stoneAndMetalColors.forEach(color=>{
+                console.log('color',color);
+                if(i.id===color.attributes['option_value'].value){
+                    console.log('color',color);
+                    
+                    setTimeout(() => {
+                        console.log(color.click());
+                    }, 500);
+                }
+            })
+        })
+    })
+
+
+
+</script>

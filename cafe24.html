@@ -7,12 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        input{
-            -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; cursor:pointer;}
+        input {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: pointer;
+        }
 
-            label{
-                cursor: pointer;
-            }
+        label {
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -31,7 +36,47 @@
             옵션을 선택해주세요
         </div>
 
-<!-- 
+
+        <div class="metalColors">
+            <input type="radio" name="metalColor" id="옐로우"><label for="Yellow">Yellow</label>
+            <input type="radio" name="metalColor" id="로즈골드"> <label for="블랙">Rose Gold</label>
+            <input type="radio" name="metalColor" id="실버"> <label for="블루">White</label>
+        </div>
+
+        <div class="metal-div">
+            옵션을 선택해주세요
+        </div>
+
+        <!-- Yellow -->
+        <!-- <div class="stones">
+            <input type="checkbox" name="metalColor" id="24K Gold"><label for="24K Gold">24K Gold</label> <br>
+        </div> -->
+
+
+        <!-- roseGold -->
+        <!-- <div class="stones">
+            <input type="checkbox" name="metalColor" id="24K Gold"><label for="24K Gold">24K Gold (+￦600,000)</label> <br>
+            <input type="checkbox" name="metalColor" id="22K Gold"><label for="22K Gold">22K Gold (+￦300,000)</label> <br>
+            <input type="checkbox" name="metalColor" id="18K Gold"><label for="18K Gold">18K Gold (+￦450,000)</label> <br>
+            <input type="checkbox" name="metalColor" id="14K Gold"><label for="14K Gold">14K Gold (+￦300,000)</label> <br>
+            <input type="checkbox" name="metalColor" id="10K Gold"><label for="10K Gold">10K Gold (+￦300,000)</label> <br>
+            <input type="checkbox" name="metalColor" id="Silver 99.9%"><label for="Silver 99.9%">Silver 99.9% (+￦400,000)</label> <br>
+            <input type="checkbox" name="metalColor" id="Silver 925(Sterling Silver)"><label for="Silver 925(Sterling Silver)">Silver 925(Sterling Silver) (+￦460,000)</label> <br>
+        </div> -->
+
+        <!-- White -->
+        <!-- <div class="stones">
+            <input type="checkbox" name="metalColor" id="22K Gold"><label for="22K Gold">22K Gold (+￦300,000)</label> <br>
+            <input type="checkbox" name="metalColor" id="18K Gold"><label for="18K Gold">18K Gold (+￦450,000)</label> <br>
+            <input type="checkbox" name="metalColor" id="14K Gold"><label for="14K Gold">14K Gold (+￦300,000)</label> <br>
+            <input type="checkbox" name="metalColor" id="10K Gold"><label for="10K Gold">10K Gold (+￦300,000)</label> <br>
+            <input type="checkbox" name="metalColor" id="Silver 99.9%"><label for="Silver 99.9%">Silver 99.9% (+￦400,000)</label> <br>
+            <input type="checkbox" name="metalColor" id="Silver 925(Sterling Silver)"><label for="Silver 925(Sterling Silver)">Silver 925(Sterling Silver) (+￦460,000)</label> <br>
+            <input type="checkbox" name="metalColor" id="Pt 950"><label for="Pt 950">Pt 950 (+￦645,000)</label> <br>
+            <input type="checkbox" name="metalColor" id="Pt 900"><label for="Pt 900">Pt 900 (+￦545,000)</label> <br>
+        </div> -->
+
+        <!-- 
         <div class="stones">
             <input type="checkbox" name="다이아몬드 / 0.1ct / round / D / VVS1 / Ecellent"
                 id="다이아몬드 / 0.1ct / round / D / VVS1 / Ecellent"><label
@@ -65,9 +110,11 @@
         let stoneColors = document.querySelectorAll('.stoneColors > input');
 
         //cafe24의 속성 입력해서 만들기
-        let stoneColors2 = document.querySelectorAll('.ec-product-button.ec-product-preview > li');
+        let stoneAndMetalColors = document.querySelectorAll('.ec-product-button.ec-product-preview > li');
 
         let stonesDiv = document.querySelector('.stones-div');
+        let metalDiv = document.querySelector('.metal-div');
+
 
         // html 템플릿
         let stoneColorWhite =
@@ -93,11 +140,57 @@
             </div>`;
 
 
+
+        // metal 템플릿
+        let metalYellow =
+            `<div class="stones">
+                <input type="checkbox" name="metalColor" id="24K Gold"><label for="24K Gold">24K Gold</label> <br>
+            </div>`
+
+        let metalRoseGold =
+            `<div class="stones">
+                <input type="checkbox" name="metalColor" id="24K Gold"><label for="24K Gold">24K Gold (+￦600,000)</label> <br>
+                <input type="checkbox" name="metalColor" id="22K Gold"><label for="22K Gold">22K Gold (+￦300,000)</label> <br>
+                <input type="checkbox" name="metalColor" id="18K Gold"><label for="18K Gold">18K Gold (+￦450,000)</label> <br>
+                <input type="checkbox" name="metalColor" id="14K Gold"><label for="14K Gold">14K Gold (+￦300,000)</label> <br>
+                <input type="checkbox" name="metalColor" id="10K Gold"><label for="10K Gold">10K Gold (+￦300,000)</label> <br>
+                <input type="checkbox" name="metalColor" id="Silver 99.9%"><label for="Silver 99.9%">Silver 99.9% (+￦400,000)</label> <br>
+                <input type="checkbox" name="metalColor" id="Silver 925(Sterling Silver)"><label for="Silver 925(Sterling Silver)">Silver 925(Sterling Silver) (+￦460,000)</label> <br>
+            </div>`;
+        let metalWhite =
+            `<div class="stones">
+                <input type="checkbox" name="metalColor" id="22K Gold"><label for="22K Gold">22K Gold (+￦300,000)</label> <br>
+                <input type="checkbox" name="metalColor" id="18K Gold"><label for="18K Gold">18K Gold (+￦450,000)</label> <br>
+                <input type="checkbox" name="metalColor" id="14K Gold"><label for="14K Gold">14K Gold (+￦300,000)</label> <br>
+                <input type="checkbox" name="metalColor" id="10K Gold"><label for="10K Gold">10K Gold (+￦300,000)</label> <br>
+                <input type="checkbox" name="metalColor" id="Silver 99.9%"><label for="Silver 99.9%">Silver 99.9% (+￦400,000)</label> <br>
+                <input type="checkbox" name="metalColor" id="Silver 925(Sterling Silver)"><label for="Silver 925(Sterling Silver)">Silver 925(Sterling Silver) (+￦460,000)</label> <br>
+                <input type="checkbox" name="metalColor" id="Pt 950"><label for="Pt 950">Pt 950 (+￦645,000)</label> <br>
+                <input type="checkbox" name="metalColor" id="Pt 900"><label for="Pt 900">Pt 900 (+￦545,000)</label> <br>
+            </div> `;
+
+
+
+
+        // Cafe24 Stones 옵션이 바뀌기때문에, 이벤트 안에서 초기화 해줘야함.
+        let cafe24Stones = document.querySelectorAll('select#product_option_id2 > option');
+        let cafe24SelectedStone = document.querySelector('select#product_option_id2');
+
+
+
+        // 메탈 컬러 disabled 해제 후 선택 가능.
+        // document.querySelectorAll('.ec-product-button.ec-product-preview > li')[4].classList.remove('ec-product-disabled');
+        // document.querySelectorAll('.ec-product-button.ec-product-preview > li')[4].click();
+
+        // 임의로 만든 metalColors 옵션
+        let metalColors = document.querySelectorAll('.metalColors > input');
+
+
         // stoneColor 옵션
         stoneColors.forEach((i) => {
             i.addEventListener('click', () => {
 
-                stoneColors2.forEach(i2 => {
+                stoneAndMetalColors.forEach(i2 => {
                     if (i.id === i2.attributes["option_value"].value) {
 
                         //cafe24의 stoneColor 옵션 클릭
@@ -128,17 +221,62 @@
 
                 let stones = document.querySelectorAll('.stones > input');
 
+                // Cafe24 Stones 옵션이 바뀌기때문에, 이벤트 안에서 초기화 해줘야함.
+                let cafe24Stones = document.querySelectorAll('select#product_option_id2 > option');
+                let cafe24SelectedStone = document.querySelector('select#product_option_id2');
+
                 stones.forEach((stone) => {
                     stone.addEventListener('click', () => {
-                        console.log(stone);
+                        cafe24Stones.forEach(cafe24Stone => {
+                            console.log('stone', stone);
+                            console.log('cafe24Stone', cafe24Stone);
+                            if (stone.id === cafe24Stone.value) {
+                                console.log('true, stone.id:', stone.id);
+                                // cafe24Stone.click();
+                                // option 엘리먼트 선택 -> value.
+                                cafe24SelectedStone.value = stone.id;
+                                document.querySelectorAll('.ec-product-button.ec-product-preview > li').forEach(i => {
+                                    i.classList.remove('ec-product-disabled')
+                                })
+                            } else {
+                                console.log('false');
+                            }
+                        })
                     })
                 })
             })
         });
 
+        // 직접 만든 버튼과 cafe24버튼 연동
+        metalColors.forEach(i => {
+            i.addEventListener('click', () => {
+                // 변수로 만들면 동작하지 않아서 일단 변수로 쓰지 않음
+                document.querySelectorAll('.ec-product-button.ec-product-preview > li').forEach(color => {
+                    console.log('i.id:',i.id);
+                    if (i.id === color.attributes['option_value'].value) {
+                        console.log('i.id:',i.id);
+                        color.click();
+                    }
+                })
 
-        // console.log(stones);
 
+                switch (i.id) {
+                case "옐로우":
+                    metalDiv.innerHTML = metalYellow;
+                    break;
+                case "로즈골드":
+                    metalDiv.innerHTML = metalRoseGold;
+                    break;
+                case "실버":
+                    metalDiv.innerHTML = metalWhite;
+                    break;
+                default:
+                    break;
+            }
+
+            })
+
+        })
 
 
     </script>
