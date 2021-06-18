@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+dd
+
+<script>
+    
+//     fetch('https://connerstone21.cafe24api.com/api/v2/oauth/token', {
+//     method: 'POST',
+//     headers: {
+//         'Authorization': 'Basic QXk2eGg0YkhBaEJySEhpdmRBQkc4QTpFd3llNDFDemN5YlczalhMTXpadk5E',
+//         'Content-Type': 'application/x-www-form-urlencoded'
+//     },
+//     body: 'grant_type=refresh_token&refresh_token=S8zeQtGuQyifuHq1wFesQH'
+// }).then((res) => res.json())
+// .then((result) => {
+//     console.log(result);
+// });
+    
+//     console.log('test');
+
+
+
+
+//     componentDidMount = () => {
+//     console.log("componentDidMount");
+//     fetch("http://localhost:5500/fetch.json")
+//       .then((res) => res.json())
+//       .then((result) => {
+//         this.setState({
+//           list: result,
+//         });
+//         console.log(result);
+//       });
+//   };
+
+//   fetch('http://example.com/movies.json')
+//   .then(function(response) {
+//     return response.json();
+//   })
+//   .then(function(myJson) {
+//     console.log(JSON.stringify(myJson));
+//   });
+
+
+// fetch('https://jsonplaceholder.typicode.com/todos/1')
+//   .then(res => {
+//     // response 처리
+//     console.log(res);
+//     // 응답을 JSON 형태로 파싱
+//     return res.json();
+//   })
+//   .then(data => {
+//     // json 출력
+//     console.log(data)
+//   })
+//   .catch(err => {
+//     // error 처리
+//     console.log('Fetch Error', err);
+//   });
+
+
+
+  fetch('http://127.0.0.1:5500/fetch.json')
+  .then(res => {
+    // response 처리
+    console.log("res",res);
+    // 응답을 JSON 형태로 파싱
+    return res.json();
+  })
+  .then(data => {
+    // json 출력
+    console.log("data",data)
+  })
+  .catch(err => {
+    // error 처리
+    console.log('Fetch Error', err);
+  });
+
+
+  fetch('https://connerstone21.cafe24api.com/api/v2/oauth/token', {
+    method: 'POST',
+    headers: {
+        'Authorization': 'Basic QXk2eGg0YkhBaEJySEhpdmRBQkc4QTpFd3llNDFDemN5YlczalhMTXpadk5E',
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: 'grant_type=refresh_token&refresh_token=WZT43Gc3INtthf2g7G7p5G'
+}).then((res) => res.json())
+.then((result) => {
+    console.log(result);
+});
+    
+    </script>
+</body>
+</html>

@@ -12,7 +12,6 @@
 
 // request(options, function (error, response, body) {
 //   if (error) throw new Error(error);
-  
 //   console.log(body);
 // });
 
@@ -54,7 +53,7 @@ fetch('https://connerstone21.cafe24api.com/api/v2/oauth/token', {
         'Authorization': 'Basic QXk2eGg0YkhBaEJySEhpdmRBQkc4QTpFd3llNDFDemN5YlczalhMTXpadk5E',
         'Content-Type': 'application/x-www-form-urlencoded'
     },
-    body: 'grant_type=authorization_code&code=OeXNJIssUqqfqJBhllmVdC&redirect_uri=https://connerstone21.cafe24.com'
+    body: 'grant_type=authorization_code&code=JKD8TT8yB1tswPNxLHW3MB&redirect_uri=https://connerstone21.cafe24.com'
 }).then((res)=> res.json())
   .then((result) => {
     console.log(result);
@@ -78,60 +77,61 @@ fetch('https://connerstone21.cafe24api.com/api/v2/oauth/token', {
 
       // 옵션 가격 추출
       var productIndex = 0;
-      var test = result['option']['options'][0]['option_value'][productIndex]['additional_amount'];
+      var test = result['option']['options'][0]['option_value'];
       console.log('test!',test);
+      console.log(test['productIndex']);
     });
 
 
 //     // 업데이트
 
-fetch('https://connerstone21.cafe24api.com/api/v2/admin/products/16/options', {
-    method: 'POST',
-    headers: {
-        'Authorization': `Bearer ${accessToken}`,
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        "shop_no": 1,
-        "request": {
-            "has_option": "T",
-            "option_type": "T",
-            "option_list_type": "S",
-            "options": [{
-                "option_name": "Color",
-                "option_value": [{
-                    "option_image_file": "http://connerstone21.cafe24.com/web/upload/image_custom_615421761805558.gif",
-                    "option_color": "#000000",
-                    "option_text": "Black"
-                }, {
-                    "option_image_file": "http://connerstone21.cafe24.com/web/upload/image_custom_615421761805551.gif",
-                    "option_color": "#007543",
-                    "option_text": "Red"
-                }],
-                "option_display_type": "P"
-            }],
-            "use_additional_option": "T",
-            "additional_options": [{
-                "additional_option_name": "Pattern",
-                "required_additional_option": "T",
-                "additional_option_text_length": 20
-            }, {
-                "additional_option_name": "Custom Option",
-                "required_additional_option": "F",
-                "additional_option_text_length": 10
-            }],
-            "use_attached_file_option": "T",
-            "attached_file_option": {
-                "option_name": "Pattern Images",
-                "required": "T",
-                "size_limit": 3
-            }
-        }
-    })
-}).then((res)=> res.json())
-.then((result) => {
-  console.log('update?',result);
-});
+// fetch('https://connerstone21.cafe24api.com/api/v2/admin/products/16/options', {
+//     method: 'POST',
+//     headers: {
+//         'Authorization': `Bearer ${accessToken}`,
+//         'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//         "shop_no": 1,
+//         "request": {
+//             "has_option": "T",
+//             "option_type": "T",
+//             "option_list_type": "S",
+//             "options": [{
+//                 "option_name": "Color",
+//                 "option_value": [{
+//                     "option_image_file": "http://connerstone21.cafe24.com/web/upload/image_custom_615421761805558.gif",
+//                     "option_color": "#000000",
+//                     "option_text": "Black"
+//                 }, {
+//                     "option_image_file": "http://connerstone21.cafe24.com/web/upload/image_custom_615421761805551.gif",
+//                     "option_color": "#007543",
+//                     "option_text": "Red"
+//                 }],
+//                 "option_display_type": "P"
+//             }],
+//             "use_additional_option": "T",
+//             "additional_options": [{
+//                 "additional_option_name": "Pattern",
+//                 "required_additional_option": "T",
+//                 "additional_option_text_length": 20
+//             }, {
+//                 "additional_option_name": "Custom Option",
+//                 "required_additional_option": "F",
+//                 "additional_option_text_length": 10
+//             }],
+//             "use_attached_file_option": "T",
+//             "attached_file_option": {
+//                 "option_name": "Pattern Images",
+//                 "required": "T",
+//                 "size_limit": 3
+//             }
+//         }
+//     })
+// }).then((res)=> res.json())
+// .then((result) => {
+//   console.log('update?',result);
+// });
 
 
 
@@ -338,4 +338,3 @@ fetch('https://connerstone21.cafe24api.com/api/v2/admin/products/16/options', {
 //     console.log(result);
 //   });
 
-  

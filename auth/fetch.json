@@ -1,0 +1,13 @@
+{
+    "url": "https:///%7Bmall_id%7D.cafe24api.com/api/v2/oauth/token",
+    "raw_url": "https://{mall_id}.cafe24api.com/api/v2/oauth/token",
+    "method": "post",
+    "headers": {
+        "Authorization": "Basic {base64_encode({client_id}:{client_Secret})}",
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "data": {
+        "grant_type": "refresh_token",
+        "refresh_token": "{refresh_token}"
+    }
+}

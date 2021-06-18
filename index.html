@@ -1,11 +1,75 @@
-<script>
+<!DOCTYPE html>
+<html lang="en">
 
-window.location = 'https://connerstone21.cafe24.com/api/v2/oauth/authorize?response_type=code&client_id=Ay6xh4bHAhBrHHivdABG8A&state=ssasd%3D&redirect_uri=https://connerstone21.cafe24.com&scope=mall.read_application,mall.write_application,mall.write_product,mall.read_product&shop_no=1';
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+
+<body>
+    <div class="stoneColors">
+        <input type="checkbox" name="" id="stone-color-white"> <label for="stone-color-white">White</label>
+        <input type="checkbox" name="" id="stone-color-yellow"> <label for="stone-color-yellow">Yellow</label>
+        <input type="checkbox" name="" id="stone-color-black"> <label for="stone-color-black">Black</label>
+        <input type="checkbox" name="" id="stone-color-red"> <label for="stone-color-red">Red</label> <br>
+    </div>
+    <div class="stoneColors2">
+        <input type="checkbox" name="" id="stone-color-white"> <label for="stone-color-white">White</label>
+        <input type="checkbox" name="" id="stone-color-yellow"> <label for="stone-color-yellow">Yellow</label>
+        <input type="checkbox" name="" id="stone-color-black"> <label for="stone-color-black">Black</label>
+        <input type="checkbox" name="" id="stone-color-red"> <label for="stone-color-red">Red</label> <br>
+    </div>
+
+    <script type="text/javascript">
+        // document.querySelector('#abc').addEventListener('click',()=>{
+        //     document.querySelector('#shadow').click();
+        // });
+
+        // document.querySelector('#abc').addEventListener('click',()=>{
+        //     document.querySelector('.ec-product-button.ec-product-preview:first-child > li > a').click();
+        // })
+        
+
+        // document.querySelectorAll('.ec-product-button.ec-product-preview')[0].childNodes.forEach((i)=>{})
 
 
-setInterval(() => {
-    console.log(window.location.search);
-}, 1000);
-</script>
+        // 반복문안에서 반복문 돌려서 value가 같으면 클릭이벤트.
 
-gd
+        // document.querySelector('#abc').addEventListener('click',()=>{
+        //     document.querySelectorAll('.ec-product-button.ec-product-preview')[0].array.forEach(i => {
+        //         if(i['option_value']==='화이트'){console.log('good')}
+        //     });
+        // })
+
+
+
+        let stoneColors = document.querySelectorAll('.stoneColors > input');
+        let stoneColors2 = document.querySelectorAll('.stoneColors2 > input');
+
+        stoneColors.forEach((i)=>{
+            i.addEventListener('click',()=>{
+                stoneColors2.forEach(i2=>{
+                    if(i.id===i2.id){
+                        i2.click();
+                    }
+                })
+            })
+        })
+
+
+        
+
+    </script>
+
+
+
+
+</body>
+
+</html>
