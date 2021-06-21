@@ -33,14 +33,6 @@ CAFE24API.get(`/api/v2/products/19/options`, function (err, res) {
       input.setAttribute("value_no", valueNo);
       input.setAttribute("additional_amount", additionalAmount);
 
-      // 이벤트 부여
-      input.addEventListener('click',()=>{
-        console.log(`${valueNo} is clicked`);
-        
-        // option_code = optionCode.. -> 전역 변수에 담아서 cart Api 함수에서 할당해줄 코드 작성
-         
-      })
-
       // 라벨
       let label = document.createElement("label");
       label.setAttribute("for", valueNo);
