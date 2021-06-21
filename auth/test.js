@@ -53,7 +53,7 @@ fetch('https://connerstone21.cafe24api.com/api/v2/oauth/token', {
         'Authorization': 'Basic QXk2eGg0YkhBaEJySEhpdmRBQkc4QTpFd3llNDFDemN5YlczalhMTXpadk5E',
         'Content-Type': 'application/x-www-form-urlencoded'
     },
-    body: 'grant_type=authorization_code&code=JKD8TT8yB1tswPNxLHW3MB&redirect_uri=https://connerstone21.cafe24.com'
+    body: 'grant_type=authorization_code&code=ddXsxBM9DZfbjNOgpfM2vA&redirect_uri=https://connerstone21.cafe24.com'
 }).then((res)=> res.json())
   .then((result) => {
     console.log(result);
@@ -64,9 +64,9 @@ fetch('https://connerstone21.cafe24api.com/api/v2/oauth/token', {
     // 'https://connerstone21.cafe24api.com/api/v2/admin/products/16/options' \
     // -H 'Authorization: Bearer result['access_token']' \
     // -H 'Content-Type: application/json' \
-    fetch('https://connerstone21.cafe24api.com/api/v2/admin/products/16/options', {
+    fetch('https://connerstone21.cafe24api.com/api/v2/admin/products/18/options', {
     headers: {
-        'Authorization': `Bearer ${accessToken}`,
+        // 'Authorization': `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
     }
     }).then((res)=> res.json())
@@ -79,7 +79,11 @@ fetch('https://connerstone21.cafe24api.com/api/v2/oauth/token', {
       var productIndex = 0;
       var test = result['option']['options'][0]['option_value'];
       console.log('test!',test);
-      console.log(test['productIndex']);
+      console.log('productIndex',test['productIndex']);
+      console.log('options:',result['option']['options'][0]);
+      console.log('options:',result['option']['options'][1]);
+      console.log('options:',result['option']['options'][2]);
+      console.log('options:',result['option']['options'][3]);
     });
 
 
