@@ -2,7 +2,7 @@ var fetch = require('node-fetch');
 
 fetch('https://connerstone21.cafe24api.com/api/v2/admin/products/19/options', {
     headers: {
-        'Authorization': `Bearer Q4zmwDtyHNivbCP0KfgR6D`,
+        'Authorization': `Bearer 1VYyvLeEZi2CTe7inIj0KG`,
         'Content-Type': 'application/json',
     }
     }).then((res)=> res.json())

@@ -53,7 +53,7 @@ fetch('https://connerstone21.cafe24api.com/api/v2/oauth/token', {
         'Authorization': 'Basic QXk2eGg0YkhBaEJySEhpdmRBQkc4QTpFd3llNDFDemN5YlczalhMTXpadk5E',
         'Content-Type': 'application/x-www-form-urlencoded'
     },
-    body: 'grant_type=authorization_code&code=ddXsxBM9DZfbjNOgpfM2vA&redirect_uri=https://connerstone21.cafe24.com'
+    body: 'grant_type=authorization_code&code=hLkUL2xABlvgStYHDEUehE&redirect_uri=https://connerstone21.cafe24.com'
 }).then((res)=> res.json())
   .then((result) => {
     console.log(result);
