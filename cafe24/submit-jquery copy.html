@@ -64,8 +64,23 @@
 
       // 옵션 선택창
       // 안보이게 설정 후, 선택된 조건에 따라 해당 옵션을 보여준다.
-      jQuery3_6_0("div[optionName$=Stone]").hide();
-      jQuery3_6_0(`div[optionName$=Metal]`).hide();
+      switch (optionName) {
+        // if(includes($Stone||$Metal))..
+        case "whiteStone":
+        case "redStone":
+        case "blueStone":
+        case "blackStone":
+        case "whiteMetal":
+        case "yellowMetal":
+        case "roseMetal":
+            div
+                .hide();
+            break;
+        default:
+            break;
+      }
+      // jQuery3_6_0("div[optionName$=Stone]").hide();
+      // jQuery3_6_0(`div[optionName$=Metal]`).hide();
 
 
       let optionValue = option.option_value; // (Array)
