@@ -176,3 +176,49 @@
 //옵션조회
 //CAFE24API.get(`/api/v2/products/19/options`, function (err, res) {console.log(res)});
 </script>
+
+<!-- 
+현재 상품등록 과정
+스톤 색상 선택하여 등록 (stoneColorRed,stoneColorBlue..등)
+색상에 맞는 스톤 옵션 만들어서 등록 (stoneColorRed/1.0ct/round/...)
+메탈 색상 선택하여 등록 (white,rose,yellow)
+색상에 맞는 임의의 함량 선택 (18K_Gold_whiteMetal_roseMetal_yellowMetal)
+스톤색상 등록시
+whiteStone, blueStone으로 문자끝에 Stone추가?
+
+
+cafe24에서 옵션등록시 브라우저 콘솔에서
+jQuery("input[value=F]").click();
+jQuery(".fText.eOptionName,.fText.eOptionValue:gt(3)").attr("value","stoneColorRed");
+jQuery(".btnSubmit").click();
+
+각 스톤의 색상 추가
+stoneColorWhite
+stoneColorRed
+stoneColorBlue
+stoneColorBlack
+stoneColorOrange.. 등 추가 등록시, 코드에는 변화없도록 하기
+
+
+24K_Gold_MetalColorYellow_MetalColorRose
+22K_Gold_MetalColorRose_MetalColorWhite
+18K_Gold_MetalColorRose_MetalColorWhite
+14K_Gold_MetalColorRose_MetalColorWhite
+10K_Gold_MetalColorRose_MetalColorWhite
+Silver999_MetalColorRose_MetalColorWhite
+Silver925_MetalColorRose_MetalColorWhite
+PT_950_MetalColorRose_MetalColorWhite
+PT_900_MetalColorRose_MetalColorWhite
+
+stoneColorWhite_diamond/1.0Ct/Round/D/VVS1/Ecellent
+stoneColorWhite_diamond/1.0Ct/round/G/SI2/VeryGood
+stoneColorWhite_diamond/1.0Ct/round/A/SI2/GOOD
+stoneColorWhite_diamond/1.0Ct/round/F/SI2/GOOD
+stoneColorWhite_diamond/1.0Ct/round/K/SI2/GOOD
+
+stoneColorRed_루비 / Round /LIGHT / AA / Non Natural / Bleaching
+
+stoneColorBlue_블루 사파이어 / 0.1ct, 블루 토파즈 /Round/LIGHT / B / Non Natural / Bleaching
+
+stoneColorBlack_블랙 수정 / 0.1ct
+ -->
