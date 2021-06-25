@@ -21,25 +21,3 @@ fetch('https://connerstone21.cafe24api.com/api/v2/admin/products/19/options', {
       console.log('options:',result['option']['options'][2]);
       console.log('options:',result['option']['options'][3]);
     });
-
-
-
-//     var fetch = require('node-fetch');
-
-// fetch('https://connerstone21.cafe24api.com/api/v2/products/19/options', {
-//     headers: {
-//         'Content-Type': 'application/json',
-//         'X-Cafe24-Client-Id': 'Ay6xh4bHAhBrHHivdABG8A'
-//     }
-// });
-
-
-
-// CAFE24API..
-// CAFE24API.init({
-//     client_id : 'Ay6xh4bHAhBrHHivdABG8A',
-// });
-
-// CAFE24API.get('/api/v2/products/19/options', function(err, res){
-//     console.log(res);
-// });

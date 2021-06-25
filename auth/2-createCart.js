@@ -22,28 +22,9 @@
     };
     CAFE24API.post('/api/v2/carts', data, function(err, res) {
         console.log(res);
-        alert(' iPhone X 상품 수량3개가 상품이 자동으로 장바구니에 담겼습니다.');
+        alert('장바구니에 담겼습니다.');
     });
 })(CAFE24API.init({
     client_id: 'Ay6xh4bHAhBrHHivdABG8A',
     // version: '2021-06-01'
 }));
-
-
-
-
-
-// 상품코드 동적 할당
-// let productNo = window.location.pathname.split('/')[3];
-
-
-// product 정보
-(function(CAFE24API) { 
-    // 상품코드 동적 할당
-    CAFE24API.get('/api/v2/products/19', function (err, res) {
-      console.log(res);
-      //
-    });
-  })(CAFE24API.init({
-    client_id: 'Ay6xh4bHAhBrHHivdABG8A'
-  }));

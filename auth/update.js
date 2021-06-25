@@ -1,23 +1,5 @@
 // 상품목록
 
-//var request = require("request");
-
-// var options = { method: 'GET',
-//   url: 'https://connerstone21.cafe24api.com/api/v2/products',
-//   headers: {
-//     'Content-Type': "application/json",
-//     'X-Cafe24-Client-Id': "Ay6xh4bHAhBrHHivdABG8A"
-//   }
-// };
-
-// request(options, function (error, response, body) {
-//   if (error) throw new Error(error);
-  
-//   console.log(body);
-// });
-
-
-
 // With fetch
 
 var fetch = require('node-fetch');

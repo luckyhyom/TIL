@@ -1,30 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        input {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            cursor: pointer;
-        }
-
-        label {
-            cursor: pointer;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div>
-
+        <!-- 카페24 상세페이지에서 class="prdDescription" 아래에 추가 시작선-->
         <div class="stoneColors">
             <input type="radio" name="stonesColor" id="화이트"><label for="화이트">화이트</label>
             <input type="radio" name="stonesColor" id="블랙"> <label for="블랙">블랙</label>
@@ -36,7 +10,6 @@
             옵션을 선택해주세요
         </div>
 
-
         <div class="metalColors">
             <input type="radio" name="metalColor" id="옐로우"><label for="Yellow">Yellow</label>
             <input type="radio" name="metalColor" id="로즈골드"> <label for="블랙">Rose Gold</label>
@@ -46,6 +19,8 @@
         <div class="metal-div">
             옵션을 선택해주세요
         </div>
+
+        <!-- 카페24 상세페이지에서 class="prdDescription" 아래에 추가 끝선 -->
 
         <!-- Yellow -->
         <!-- <div class="stones">
@@ -98,6 +73,9 @@
 
     <!-- outerHTML:<li class=\"ec-product-selected\" option_value=\"화이트\" link_image=\"\" title=\"화이트\"><a href=\"#none\" style=\"background-color:#ffffff\"><span>화이트</span></a></li> -->
     <!-- <li class="ec-product-selected" option_value="화이트" link_image="" title="화이트"><a><span>화이트</span></a></li> -->
+
+
+    <!-- cafe24 상품상세 맨 아래에 스크립트 추가 시작선 -->
     <script>
 
         let stoneColors = document.querySelectorAll('.stoneColors > input');
@@ -286,6 +264,4 @@
 
     </script>
 
-</body>
-
-</html>
+        <!-- cafe24 상품상세 맨 아래에 스크립트 추가 끝선 -->

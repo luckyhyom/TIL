@@ -1,20 +1,3 @@
-
-// "$" prototype이 참조
-<script>
-    ( function($) {
-        // 여기서 "$"를 jQuery로 참조
-          $(function() {
-            // Jquery
-// $() 함수에 전달되는 인수는 반드시 따옴표("")를 사용한 문자열 형태로 전달되어야 합니다.
-
-if (typeof jQuery == 'undefined') {
-  alert("없음");
-  }else{
-  alert("있음");  
-}
-
-
-
 /**
  * Cafe24 API Documents
  * https://developer.cafe24.com/docs/api/front/#create-a-carts
@@ -23,7 +6,6 @@ if (typeof jQuery == 'undefined') {
  */
 
 CAFE24API.init({
-  // Cafe24 개발자센터 myApp에서 id값 참조
   client_id: "Ay6xh4bHAhBrHHivdABG8A",
 });
 
@@ -44,11 +26,6 @@ let productCode = "";
     client_id: "Ay6xh4bHAhBrHHivdABG8A",
   })
 );
-
-
-
-
-
 
 // 옵션들[] -> 옵션값[]
 let optionsOri = {};
@@ -92,12 +69,28 @@ CAFE24API.get(`/api/v2/products/${productNo}/options`, function (err, res) {
 
       // 이벤트 부여
       input.addEventListener("click", () => {
+
         // option_code = optionCode.. -> 전역 변수에 담아서 cart Api 함수에서 할당해줄 코드 작성
+        // let addOption = { option_code: optionCode, value_no: valueNo };
+
+        // if (optionOri.indexOf(addOption) < 0) {
+        //   optionsOri.push(addOption);
+        // }
 
         // 동일한 option_code가 이미 존재한다면?
-        // key/value 형태로 변수에 담고, 카트에 담을때는 반복문을 이용해 배열로 만든다.
+        // [{option_code:{option_code,value_no},option_code:{option_code,value_no}}]
 
+        // key/value 형태로 변수에 담고, 카트에 담을때는 반복문을 이용해 배열로 만든다..
+        let addOption = {
+          optionCode: { option_code: optionCode, value_no: valueNo },
+        };
+        // **문자열을 이용해 키를 추가/검색 하기위해 obj[""] 대괄호가 존재한다.
         optionsOri[optionCode] = { option_code: optionCode, value_no: valueNo };
+
+        // 같은 옵션코드를 가진 아이를 배출
+        // optionOri.filter((option) => option.option_code === input.opionCode);
+
+        // 같은 옵션코드를 가졌다면 변경
 
         console.log(optionsOri);
       });
@@ -120,30 +113,16 @@ CAFE24API.get(`/api/v2/products/${productNo}/options`, function (err, res) {
 });
 
 // 연동 옵션 장바구니 담기 코드, 임의로 생성한 mySubmit 버튼에 이벤트 생성
-// document.querySelector(".mySubmit").addEventListener("click", () => {
-//   // 객체를 배열로 만들어서
-//   arr = Object.entries(optionsOri);
-//   arr.forEach((a) => {
-//     // index[1]에 있는 option정보를 optionsArr에 넣는다.
-//     optionsArr.push(a[1]);
-//   });
+document.querySelector(".mySubmit").addEventListener("click", () => {
+  // 객체를 배열로 만들어서
+  arr = Object.entries(optionsOri);
+  arr.forEach((a) => {
+    // index[1]에 있는 option정보를 optionsArr에 넣는다.
+    optionsArr.push(a[1]);
+  });
 
-//   createCart(CAFE24API, productNo, productCode, optionsArr);
-// });
-
-
-$(".mySbmit").on("click",()=>{
-    // 객체를 배열로 만들어서
-    arr = Object.entries(optionsOri);
-    arr.forEach((a) => {
-      // index[1]에 있는 option정보를 optionsArr에 넣는다.
-      optionsArr.push(a[1]);
-    });
-  
-    createCart(CAFE24API, productNo, productCode, optionsArr);
+  createCart(CAFE24API, productNo, productCode, optionsArr);
 });
-
-
 
 
 function createCart(CAFE24API, productNo, productCode, optionsArr) {
@@ -156,7 +135,7 @@ function createCart(CAFE24API, productNo, productCode, optionsArr) {
       prefaid_shipping_fee: "P",
       variants: [
         {
-          quantity: 3,
+          quantity: 1,
           // 상품코드+000A
           variants_code: productCode + "000A",
           options: optionsArr,
@@ -169,8 +148,3 @@ function createCart(CAFE24API, productNo, productCode, optionsArr) {
     alert("장바구니에 담겼습니다.");
   });
 }
-
-        });
-    } ) ( jQuery );    
-</script>
-
