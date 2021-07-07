@@ -3,6 +3,8 @@
 // 하나의 미들웨어에는 send가 하나만 있어야 한다. (조건문일때 return 사용하기)
 
 import express from 'express'
+import fs from 'fs';
+import fetch from 'node-fetch';
 const app = express();
 
 // IP 네트워크상의 주소
@@ -43,6 +45,12 @@ app.get('/',(req,res,next)=>{
 app.get('/',(req,res,next)=>{
     console.log('second');
 })
+app.get('/err',(req,res,next)=>{
+    fs.readFileSync('./file.txt');
+})
+app.get('/err2',(req,res,next)=>{
+    fs.readFileSync('./file.txt');
+})
 
 app.use((req,res,next)=>{
 
@@ -50,7 +58,7 @@ app.use((req,res,next)=>{
 
 app.use((error,req,res,next)=>{
     console.log(error);
-    res.status(500).send('Sorry, do this later!');
+    res.status(500).send(error,'Sorry, do this later!');
 })
 
 
