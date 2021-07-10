@@ -15,7 +15,7 @@ const server = http.createServer((req,res)=>{
     if(url==='/'){
         fs.createReadStream('./html/index.html').pipe(res);
     }else if(url==='/course'){
-        fs.createReadStream('./html/index.html').pipe(res);
+        fs.createReadStream('./html/course.html').pipe(res);
     }else{
         fs.createReadStream('./html/not-found.html').pipe(res);
     }
