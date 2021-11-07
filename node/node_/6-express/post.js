@@ -9,7 +9,7 @@ app.use(express.json());
 
 app.post('/test',(req,res,next)=>{
     console.log(req.body);
-    res.send('good');
+    res.send(req.body);
 });
 
 app.use((err,req,res,next)=>{

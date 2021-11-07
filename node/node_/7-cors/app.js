@@ -24,7 +24,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 // 모니터링용 외부 미들웨어
-app.use(morgan('combined'));
+// app.use(morgan('combined'));
 app.use(cors(corsOptions));
 // 보안에 필요한 헤더들을 추가해주는 미들웨어
 // app.use(helmet());
