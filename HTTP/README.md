@@ -22,3 +22,12 @@ if-modified-since: 2020년 11월 10일 10:00:00
 - max-age 초단위
 - no-cache 데이터는 캐시해도 되지만, 항상 원 서버에 검증하고 사용.
 - no-store 데이터에 민감한 정보가 있으므로 저장하면 안됨 (메모리에서 사용 후 최대한 빨리 삭제)
+
+### 확실한 캐시 무효화
+
+웹브라우저에서 자동으로 캐시하는 경우가 있다.
+Cache-Control: no-cache, no-store, must-revalidate
+Pragma: no-cache
+
+- must-revalidate: 서버 에러 발생시 기존 캐시 재사용하지 말것
+- Pragma: no-cache: HTTP 1.0 하위호환
