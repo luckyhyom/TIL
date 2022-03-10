@@ -42,3 +42,42 @@ SELECT AVG(CASE WHEN qyantity IS NULL THEN 0 ELSE quantity END) AS avg FROM samp
 ### 내부처리 순서
 
 WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY
+
+### 서브쿼리
+
+다중 명령을 하나로 묶는 것
+
+> 테이블에서 a열의 값이 가장 작은 행을 삭제한다. <br>
+>
+> 1. 가장 작은 값을 찾기 <br>
+> 2. 삭제하기
+
+```
+DELETE FROM sample WHERE a = (SELECT MIN(a) FROM sample);
+```
+
+### 스칼라
+
+하나의 값만 반환하는 명령문
+
+### 상관 서브쿼리
+
+부모 명령과 자식인 서브쿼리가 특정 관계를 맺는 것
+
+> IN에 서브쿼리를 이용하기 <br>
+> SELCT \* FROM sample551 WHERE no IN (SELECT no2 FROM sample552);
+
+### 인덱스
+
+인덱스도 독립된 데이터베이스 객체이다.
+
+### 이진트리
+
+- 이진 탐색은 미리 정렬되어 있어야한다.
+- 중복 값 입력 불가
+
+### VIEW
+
+FROM구에 기술된 서브쿼리에 이름을 붙여 쓰기 편하게 한 것, <br>
+SELECT문에 이름을 붙인 것 <br>
+ETC) 머티리얼라이즈드 뷰?
