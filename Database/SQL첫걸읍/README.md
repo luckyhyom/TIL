@@ -81,3 +81,15 @@ DELETE FROM sample WHERE a = (SELECT MIN(a) FROM sample);
 FROM구에 기술된 서브쿼리에 이름을 붙여 쓰기 편하게 한 것, <br>
 SELECT문에 이름을 붙인 것 <br>
 ETC) 머티리얼라이즈드 뷰?
+
+## 집합연산
+
+### UNION
+
+여러가지 테이블 또는 SELECT 문을 함께 묶어 결과를 반환한다. 중복은 제거한다.
+
+### 교차 결합
+
+FROM구에 두개 이상의 테이블을 지정한다, 곱집합이 된다. ABC x 123
+
+> 내부결합: 곱집합에서 원하는 조합을 검색한다. <br> > `SELECT * FROM 삼품, 재고수 WHERE 상품.상품코드 = 재고수.상품코드;`
