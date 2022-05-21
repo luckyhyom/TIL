@@ -27,3 +27,9 @@
 - Network
 - Data Link
 - Physical
+
+OSI 서로 다른 기종의 통신을 위해 만들어둔 참조 모델 (규칙)
+
+TTL: time to live 하나의 경로를 거칠때마다 1씩 값이 깎이며 0이되면 폐기
+
+홉: 목적지 전의 중간 네트워크
