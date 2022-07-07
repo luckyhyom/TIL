@@ -16,4 +16,6 @@ a();
  * 
  * 버튼같은 곳에도 적용 가능
  * btn.onClick = toggle(() => { console.log(0) });
+ * 
+ * https://poiemaweb.com/js-closure
  */
