@@ -31,3 +31,26 @@ normal.getTitle(); // normal
 normal.arrowsFunc(); // global
 
 
+
+
+
+// regular는 this가 동적 스코프에 바인딩되며 arrow는 정적 스코프에 바인딩된다.
+var point = 200;
+const sports = {
+    point: 100,
+    getPoint: function () {
+        console.log(this.point);
+        return this.point;
+    }
+}
+sports.getPoint() // 100
+
+var point = 200;
+const sports = {
+    point: 100,
+    getPoint: () => {
+        console.log(this.point);
+        return this.point;
+    }
+}
+sports.getPoint(); //200
