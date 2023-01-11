@@ -3,7 +3,11 @@ const obj = {
 }
 
 obj.exports.log = { func: 'log!' }
-
+/**
+ * Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).
+ *
+ * objProp는 전역변수가 아니라 함수의 스코프 안에서 놀기는 하는듯 아 모르겠다
+ */
 function load(obj2, objProp) {
   console.log(objProp)
   obj2 = {} // 쉣이네.. 여기서 완전히 새로운 변수가 생기는건가.. 값의 재할당이 아니라
