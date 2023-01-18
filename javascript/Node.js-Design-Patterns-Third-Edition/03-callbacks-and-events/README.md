@@ -33,3 +33,9 @@ console.log('before')
 addCps(1, 2, result => console.log(`Result: ${result}`)) // 결과가 나오면 나를 다시 불러줘
 console.log('after')
 ```
+
+### EventEmitter Class
+
+- <b>전통적인 CPS와 다른점은 주체가 실질적으로 여러 관찰자에게 통지를 할 수 있다는 점</b>
+
+- 콜백에서처럼 에러가 발생했을때 예외를 단지 throw할 수 없습니다. error라는 특수한 이벤트를 발생시키고, Error라는 객체를 인자로 전달하는 규약을 따릅니다.
