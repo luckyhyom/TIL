@@ -1,13 +1,26 @@
+const fs = require("fs");
+
+fs.createReadStream("test.txt", { highWaterMark: 16 })
+    .on("open", () => {
+        console.log("opend!");
+    })
+    .on("ready", () => {
+        console.log("read!");
+    })
+    .on("data", (data) => {
+        console.log(`data: ${data}`);
+    });
+
 setTimeout(() => {
     console.log(1);
     for (let i = 0; i < 5; i++) {
         console.log(i);
     }
-}, 2); // 제어권을 async.js에 넘겨주지만 setTimeout은 실행중이다. 아래 코드를 읽기 전에 2ms가 지났으므로 이것의 핸들러가 먼저 큐에 들어간다.
+}, 4); // 제어권을 async.js에 넘겨주지만 setTimeout은 실행중이다. 아래 코드를 읽기 전에 2ms가 지났으므로 이것의 핸들러가 먼저 큐에 들어간다.
 
 setTimeout(() => {
     console.log("2 나는?"); // 이벤트 루프의 Timers Queue에 첫번째로 들어간 타이머의 콜백이 완전히 종료 된 후 실행된다.
-}, 0);
+}, 10);
 
 setTimeout(() => {
     console.log(3, "마지막에 실행된다.");
@@ -19,3 +32,7 @@ setTimeout(() => {
  *
  *
  */
+
+//for (let i = 0; i < 500; i++) {
+//    console.log("data");
+//}
