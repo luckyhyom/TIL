@@ -1,8 +1,7 @@
-exports.loaded = false
-
+// a.js
+console.log('a.js 시작')
 const b = require('./b')
-
-module.exports = {
-  b,
-  loaded: true // overrides the previous export
+b.call()
+exports.call = () => {
+  console.log('a.js의 call에서의 b: ', b)
 }
